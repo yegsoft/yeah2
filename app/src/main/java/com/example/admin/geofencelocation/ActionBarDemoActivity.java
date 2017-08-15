@@ -98,7 +98,7 @@ public class ActionBarDemoActivity extends YouTubeFailureRecoveryActivity implem
 
     if (!wasRestored) {
 
-        player.cueVideo(oynat);
+      player.cueVideo(oynat);
 
     }
   }

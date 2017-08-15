@@ -103,11 +103,12 @@ public class TrabzonMap extends AppCompatActivity implements
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
     }
 
-    private void addMarkersToMap() {
+    public void addMarkersToMap() {
        mMap.addMarker(new MarkerOptions()
                 .position(AKCAABAT)
                 .title("Akçaabat Horonu")
-                .snippet("Akçaabat"));
+                .snippet("Akçaabat")
+                .visible(false));
 
 
         mMap.addMarker(new MarkerOptions()

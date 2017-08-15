@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DialogActivity extends Activity implements OnClickListener {
@@ -34,8 +35,8 @@ public class DialogActivity extends Activity implements OnClickListener {
             String location = getIntent().getExtras().getString("alert");
             Log.d("Yusuf", "AAAAAAAAAAAAAAAAAAAAAAA "+location);
             message=location;
-        } else if (getIntent().getExtras() == null) {
-            Log.d("Yusuf", "BBBBBBBBBBBBBBBBBBBBBBBB");
+            TextView textView = (TextView) findViewById(R.id.textView1);
+            textView.setText(message+" bölgesinde şarkı keşfedildi!");
         }
 
 
@@ -46,6 +47,11 @@ public class DialogActivity extends Activity implements OnClickListener {
 
         switch (v.getId()) {
             case R.id.ok_btn_id:
+
+                Intent in = new Intent(this, ActionBarDemoActivity.class);
+                String intToSend = message;
+                in.putExtra("location", intToSend);
+                startActivity(in);
 
                 showToastMessage(message);
                 this.finish();
