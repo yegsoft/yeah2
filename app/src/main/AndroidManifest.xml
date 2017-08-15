@@ -25,6 +25,9 @@
         <activity
             android:name=".DialogActivity"
             android:theme="@android:style/Theme.Holo.Light.Dialog">
+            <intent-filter>
+                <action android:name="popup"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".NavDrawer"

@@ -5,7 +5,9 @@ package com.example.admin.geofencelocation;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,9 +16,9 @@ import android.widget.Toast;
 public class DialogActivity extends Activity implements OnClickListener {
 
     Button ok_btn, cancel_btn;
-
+    String message;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -28,6 +30,15 @@ public class DialogActivity extends Activity implements OnClickListener {
         ok_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
 
+        if(getIntent().getExtras() != null){
+            String location = getIntent().getExtras().getString("alert");
+            Log.d("Yusuf", "AAAAAAAAAAAAAAAAAAAAAAA "+location);
+            message=location;
+        } else if (getIntent().getExtras() == null) {
+            Log.d("Yusuf", "BBBBBBBBBBBBBBBBBBBBBBBB");
+        }
+
+
     }
 
     @Override
@@ -36,7 +47,7 @@ public class DialogActivity extends Activity implements OnClickListener {
         switch (v.getId()) {
             case R.id.ok_btn_id:
 
-                showToastMessage("Ok Button Clicked");
+                showToastMessage(message);
                 this.finish();
 
                 break;

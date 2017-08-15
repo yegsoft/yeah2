@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
@@ -47,10 +48,7 @@ public class GeofenceReciever extends BroadcastReceiver {
         pref = PreferenceManager.getDefaultSharedPreferences(context);
         editor = pref.edit();
 
-        Intent i = new Intent();
-        i.setClassName("com.example.admin.geofencelocation", "com.example.admin.geofencelocation.DialogActivity");
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
+
 
 
 
@@ -116,10 +114,15 @@ public class GeofenceReciever extends BroadcastReceiver {
         Log.i(TAG, "sendNotification: " + msg);
 
         //burası bildirimin gideceği yeri belirliyor
+
         Intent notificationIntent = new Intent(contextBootReceiver, ActionBarDemoActivity.class);
         notificationIntent.putExtra("location", msg);
 
-
+        Intent i = new Intent();
+        i.setClassName("com.example.admin.geofencelocation", "com.example.admin.geofencelocation.DialogActivity");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("alert",msg);
+        contextBootReceiver.startActivity(i);
 
 
 
@@ -130,6 +133,7 @@ public class GeofenceReciever extends BroadcastReceiver {
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
         PendingIntent notificationPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
 
 
         // Creating and sending Notification

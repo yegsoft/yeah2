@@ -107,29 +107,29 @@ public class TrabzonMap extends AppCompatActivity implements
        mMap.addMarker(new MarkerOptions()
                 .position(AKCAABAT)
                 .title("Akçaabat Horonu")
-                .snippet("jiYkUaJMW6U"));
+                .snippet("Akçaabat"));
 
 
         mMap.addMarker(new MarkerOptions()
                 .position(MACKA)
                 .title("Maçka Yolları Taşlı")
-                .snippet("yekyXM7tO34"));
+                .snippet("Maçka"));
 
         mMap.addMarker(new MarkerOptions()
                 .position(SURMENE)
                 .title("Oy Çalamadum Gitti")
-                .snippet("t6hNicK_OdQ"));
+                .snippet("Sürmene"));
 
         mMap.addMarker(new MarkerOptions()
                 .position(HAMSIKOY)
                 .title("Hamsiköy")
-                .snippet("pQsZ4homq-Q"));
+                .snippet("Hamsiköy"));
 
 
         mMap.addMarker(new MarkerOptions()
                 .position(TONYA)
                 .title("Tonya")
-                .snippet("hneU6fj0V5M"));
+                .snippet("Tonya"));
     }
 
     @Override
@@ -149,7 +149,7 @@ public class TrabzonMap extends AppCompatActivity implements
 
             Intent in = new Intent(this, ActionBarDemoActivity.class);
             String intToSend = track;
-            in.putExtra("gonder", intToSend);
+            in.putExtra("location", intToSend);
             startActivity(in);
             mSelectedMarker = null;
             return true;
